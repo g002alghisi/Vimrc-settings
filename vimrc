@@ -25,14 +25,14 @@ set ignorecase " case insensitive search
 set smartcase " If there are uppercase letters, become case-sensitive.
 set incsearch " live incremental searching
 set showmatch " live match highlighting
-set hlsearch " highlight matches
+" set hlsearch " highlight matches
 
 set cursorline
 set termguicolors
 set mouse=a
 set number
 
-set list listchars=trail:·
+" set list listchars=trail:·
 
 
 " Settings for YouCompleteMe plugin
@@ -45,3 +45,17 @@ autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 " Bash settings
 autocmd FileType bash setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+
+" Toggle Mouse and numbers
+function! ToggleMouseAndLineNumbers()
+  if &mouse != ""
+    set mouse=
+    set nonu
+  else
+    set mouse=a
+    set nu
+  endif
+endfunction
+
+map <F3> <ESC>:call ToggleMouseAndLineNumbers()<CR>
+
